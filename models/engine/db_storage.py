@@ -39,15 +39,18 @@ class DBStorage:
         database session, depending on name or not"""
         results = {}
 
-        if cls:
-            for instance in self.__session.query(cls).all():
-                key = f"{cls.__name__}.{instance.id}"
+        classes = {"City": City, "State": State,
+                   "User": User, "Place": Place,
+                   "Review": Review, "Amenity": Amenity}
+
+        if cls is not None:
+            for instance in self.__session.query(classes[cls]).all():
+                key = f"{classes[cls].__name__}.{instance.id}"
                 results[key] = instance
         else:
-            classes = [User, State, City, Amenity, Place, Review]
-            for cl in classes:
-                for instance in self.__session.query(cl).all():
-                    key = f"{cls.__name__}.{instance.id}"
+            for cl in classes.keys():
+                for instance in self.__session.query(classes[cl]).all():
+                    key = f"{classes[cl].__name__}.{instance.id}"
                     results[key] = instance
 
         return results
@@ -62,7 +65,7 @@ class DBStorage:
 
     def delete(self, obj=None):
         """Deletes an object from the current database session"""
-        if obj:
+        if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
