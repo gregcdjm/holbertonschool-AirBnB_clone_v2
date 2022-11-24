@@ -3,6 +3,7 @@
 from models.base_model import BaseModel
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+from models.base_model import Base
 
 class User(BaseModel, Base):
     """This class defines a user by various attributes"""
