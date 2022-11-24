@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
-from models import storage
 from models.base_model import BaseModel, Base
 from models.city import City
 from sqlalchemy import Column, String
@@ -21,5 +20,6 @@ class State(BaseModel, Base):
         def cities(self):
             """Getter for the list of City instances corresponding to this
             state """
+            from models import storage
             return [city for city in storage.all(City).values()
                     if self.id == city.state_id]
