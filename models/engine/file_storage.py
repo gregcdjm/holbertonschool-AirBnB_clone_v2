@@ -53,6 +53,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """Deletes the specified object from models currently in storage"""
         if obj is not None:
             FileStorage.__objects.pop(
                 f"{obj.__class__.__name__}.{obj.id}", None)
