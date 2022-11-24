@@ -14,9 +14,9 @@ class FileStorage:
             return FileStorage.__objects
         results = {}
         o = FileStorage.__objects
-        for obj in o:
-            if o[obj].__class__ == cls:
-                results[o] = o[obj]
+        for key in o:
+            if o[key].__class__ == cls:
+                results[key] = o[key]
         return results
         # return {obj for obj in o if obj.__class__ == cls}
 
