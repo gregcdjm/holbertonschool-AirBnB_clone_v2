@@ -18,7 +18,6 @@ class FileStorage:
             if o[key].__class__ == cls:
                 results[key] = o[key]
         return results
-        # return {obj for obj in o if obj.__class__ == cls}
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
