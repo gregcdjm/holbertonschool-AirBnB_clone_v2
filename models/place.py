@@ -9,8 +9,9 @@ from sqlalchemy.orm import relationship
 class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = "places"
-    city_id = Column(String(60), nullable=False)
-    user_id = Column(String(60), nullable=False)
+    id = Column(Integer, primary_key=True)
+    city_id = Column(String(60), nullable=False, ForeignKey ('cities.id'))
+    user_id = Column(String(60), nullable=False, ForeignKey ('users.id'))
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=True)
     number_rooms = Column(Integer, nullable=False)
