@@ -22,7 +22,7 @@ def hello_flask_hbnb():
 @app.route('/c/<text>')
 def hello_flask_text(text):
     """Retunr hbnb"""
-    return '{text}\'s profile'
+    return 'C ' + text
 
 
 if __name__ == '__main__':
