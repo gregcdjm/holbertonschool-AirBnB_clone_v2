@@ -9,6 +9,8 @@ app = Flask(__name__)
 def hello_flask():
     """Retunr hello"""
     return 'Hello HBNB!'
+
+
 @app.route('/hbnb')
 def hello_flask_hbnb():
     """Retunr hello"""
