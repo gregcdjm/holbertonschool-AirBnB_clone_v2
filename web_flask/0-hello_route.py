@@ -1,11 +1,11 @@
-#!/usr/bin/python3 __init__.py
+#!/usr/bin/python3
 """flask app"""
 
 from Flask import flask
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route('/')
 def hello_flask():
     """Retunr hello"""
     return 'Hello HBNB!'
