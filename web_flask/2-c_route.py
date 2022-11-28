@@ -18,7 +18,7 @@ def hello_flask_hbnb():
 
 
 @app.route('/c/<text>')
-def hello_flask_hbnb():
+def hello_flask_text():
     """Retunr hbnb"""
     return "C {escape(text)"
 
