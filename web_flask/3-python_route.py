@@ -26,7 +26,7 @@ def hello_flask_text(text):
 
 
 @app.route('/python/<text>')
-def hello_flask_text2(text=is_cool):
+def hello_flask_text2(text="is_cool"):
     """Retunr hbnb"""
     return 'Python ' + text.replace('_', ' ')
 
