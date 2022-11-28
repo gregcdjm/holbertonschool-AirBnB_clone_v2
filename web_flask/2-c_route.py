@@ -3,6 +3,7 @@
 
 from flask import Flask
 from markupsafe import escape
+from flask import url_for
 app = Flask(__name__)
 
 
@@ -21,7 +22,7 @@ def hello_flask_hbnb():
 @app.route('/c/<text>')
 def hello_flask_text(text):
     """Retunr hbnb"""
-    return "C "text
+    return f'{text}\'s profile'
 
 
 if __name__ == '__main__':
