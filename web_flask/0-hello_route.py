@@ -6,4 +6,5 @@ app = Flask(__name__)
 """fjfjfjjf"""
 @app.route("/")
 def hello_world():
+    """fofofofo"""
     return "<p>Hello, World!</p>"
