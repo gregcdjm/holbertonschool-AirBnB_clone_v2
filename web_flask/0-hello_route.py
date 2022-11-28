@@ -6,6 +6,6 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
+def hello_flask():
     """Retunr hello"""
-    return "<p>Hello HBNB!</p>"
+    return 'Hello HBNB!'
