@@ -10,7 +10,7 @@ def hello_flask():
     """Retunr hello"""
     return 'Hello HBNB!'
 @app.route('/hbnb')
-def hello_flask():
+def hello_flask_hbnb():
     """Retunr hello"""
     return 'HBNB'
 
