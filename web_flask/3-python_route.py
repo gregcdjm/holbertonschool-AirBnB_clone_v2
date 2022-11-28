@@ -25,6 +25,7 @@ def hello_flask_text(text):
     return 'C ' + text.replace('_', ' ')
 
 
+@app.route('/python/')
 @app.route('/python/<text>')
 def hello_flask_text2(text="is_cool"):
     """Retunr hbnb"""
