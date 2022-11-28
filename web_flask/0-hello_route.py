@@ -1,10 +1,11 @@
 #!/usr/bin/python3 __init__.py
-"""fffffkfkkfkfk"""
+"""flask app"""
+
 import Flask from flask
-"""fffkfkfkfk"""
 app = Flask(__name__)
-"""fjfjfjjf"""
+
+
 @app.route("/")
 def hello_world():
-    """fofofofo"""
-    return "<p>Hello, World!</p>"
+    """Retunr hello"""
+    return "<p>Hello HBNB!</p>"
