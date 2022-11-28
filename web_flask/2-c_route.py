@@ -21,7 +21,7 @@ def hello_flask_hbnb():
 @app.route('/c/<text>')
 def hello_flask_text(text):
     """Retunr hbnb"""
-    return "C {escape(text)"
+    return "C text"
 
 
 if __name__ == '__main__':
