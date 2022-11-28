@@ -35,8 +35,8 @@ def hello_flask_text2(text="is_cool"):
 @app.route('/number/<n>')
 def hello_flask_number(n):
     """Retunr hbnb"""
-    if n >= 0
-    return n " is a nulber"
+    if int:n
+    return n + ' is a number'
 
 
 if __name__ == '__main__':
