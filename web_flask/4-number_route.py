@@ -32,10 +32,10 @@ def hello_flask_text2(text="is_cool"):
     return 'Python ' + text.replace('_', ' ')
 
 
-@app.route('/number/<n>')
+@app.route('/number/<int:n>')
 def hello_flask_number(n):
     """Retunr hbnb"""
-    if int:n
+    if int: n
     return n + ' is a number'
 
 
