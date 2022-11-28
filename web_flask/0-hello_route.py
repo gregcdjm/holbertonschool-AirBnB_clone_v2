@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """flask app"""
 
-from Flask import flask
+from flask import Flask
 app = Flask(__name__)
 
 
