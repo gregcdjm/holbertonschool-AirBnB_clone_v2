@@ -36,6 +36,7 @@ def hello_flask_text2(text="is_cool"):
 def hello_flask_number(n=None):
     """Retunr number"""
     if int: n
+
     return str(n) + ' is a number'
 
 
