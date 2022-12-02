@@ -62,3 +62,8 @@ class FileStorage:
             FileStorage.__objects.pop(
                 f"{obj.__class__.__name__}.{obj.id}", None)
             # del(FileStorage.__objects[f"{obj.__class__.__name__}.{obj.id}"])
+
+
+    def close(self):
+        """ Json deserializing JSONfile to obj"""
+        return self.reload()
