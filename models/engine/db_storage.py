@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-"""Define storage engine using MySQL database
-"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
@@ -20,19 +18,14 @@ class DBStorage:
 
     def __init__(self):
         """Initializes the engine"""
-        HBNB_MYSQL_USER = getenv("HBNB_MYSQL_USER")
-        HBNB_MYSQL_PWD = getenv("HBNB_MYSQL_PWD")
-        HBNB_MYSQL_HOST = getenv("HBNB_MYSQL_HOST")
-        HBNB_MYSQL_DB = getenv("HBNB_MYSQL_DB")
         HBNB_ENV = getenv("HBNB_ENV")
 
-        self.__engine = create_engine((
-            f"mysql+mysqldb://"
-            f"{HBNB_MYSQL_USER}:"
-            f"{HBNB_MYSQL_PWD}@"
-            f"{HBNB_MYSQL_HOST}/"
-            f"{HBNB_MYSQL_DB}"),
-            pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
+                                      getenv('HBNB_MYSQL_USER'),
+                                      getenv('HBNB_MYSQL_PWD'),
+                                      getenv('HBNB_MYSQL_HOST'),
+                                      getenv('HBNB_MYSQL_DB')),
+                                      pool_pre_ping=True)
 
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
@@ -40,23 +33,23 @@ class DBStorage:
     def all(self, cls=None):
         """Returns a dictionary of all objects currently stored in the
         database session, depending on name or not"""
-        results = {}
 
-        classes = {"City": City, "State": State,
-                   "User": User, "Place": Place,
-                   "Review": Review, "Amenity": Amenity}
+        new_dict = {}
 
-        if cls is not None:
-            for instance in self.__session.query(classes[cls]).all():
-                key = f"{classes[cls].__name__}.{instance.id}"
-                results[key] = instance
+        if cls is None:
+            classes = [User, State, City, Amenity, Place, Review]
+            for item in classes:
+                result = self.__session.query(item).all()
+                for element in result:
+                    key = "{}.{}".format(item.__name__, element.id)
+                    new_dict[key] = element
+            return new_dict
         else:
-            for cl in classes.keys():
-                for instance in self.__session.query(classes[cl]).all():
-                    key = f"{classes[cl].__name__}.{instance.id}"
-                    results[key] = instance
-
-        return results
+            result = self.__session.query(cls).all()
+            for element in result:
+                key = "{}.{}".format(cls.__name__, element.id)
+                new_dict[key] = element
+            return new_dict
 
     def new(self, obj):
         """Adds an object to the current database session"""
@@ -79,6 +72,6 @@ class DBStorage:
         Session = scoped_session(session_factory)
         self.__session = Session()
 
-        def close(self):
-            """ close on the private seesion attribute"""
-            self.session.remove()
+    def close(self):
+        """Closes the session"""
+        self.__session.close()
